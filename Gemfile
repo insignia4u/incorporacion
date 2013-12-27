@@ -15,7 +15,7 @@ gem 'dynamic_form'
 gem 'inherited_resources', '1.4.1'
 gem 'figaro'
 gem 'devise'
-gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem "paperclip", github: "thoughtbot/paperclip"
 
 group :development, :test do
   gem 'sqlite3'

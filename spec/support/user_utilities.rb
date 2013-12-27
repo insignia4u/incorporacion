@@ -7,4 +7,5 @@ def login_with(resource)
   fill_in "#{namespace}[password]", with: "123123123"
 
   click_button 'Sign in'
+  
 end

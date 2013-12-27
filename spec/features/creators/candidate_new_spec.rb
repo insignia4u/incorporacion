@@ -29,4 +29,13 @@ feature "New Candidate" do
     expect(page).to have_content "Last name can't be blank"
     expect(page).to have_content "Email can't be blank"
   end
+
+  scenario "with an unsigned in user" do
+    visit '/candidates/new'
+    expect(current_path).to eql new_user_session_path
+  end
+end
+
+feature "List Candidate" do
+
 end

@@ -1,28 +1,65 @@
-== README
+Incorporacion
+=======
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Dependencies
+-------
 
-Things you may want to cover:
+ - Ruby 2.0.0-p247
+ - Bundler
+ - Rails 4.0.0
+ - SQLite 3
 
-* Ruby version
+Quick start
+-------
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If you satisfy all the dependencies you can clone the repository via git:
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+```
+$ git clone git@github.com:insignia4u/incorporacion.git
+```
+
+And then go to your project folder and run:
+
+```
+$ bundle install
+```
+You also have to set up all environment variables and config your database settings, you can do it creating the following files (we have created sample files inside config folder as an example) :
+
+```
+incorporacion/
+└── config/
+    ├── application.yml   -> Environment variables here
+    └── database.yml      -> Database Configuration here
+```
+
+Now you can start the server with rails in any port that you like; for instance, port 3000 :
+
+```
+$ rails -p 3000
+```
+
+Install Dependencies
+-------
+- **Ruby & Rails**
+
+    If you don't have Ruby or Rails, I recommend you to use [rvm][1] to manage your Ruby versions and gems; you can follow instructions based on your operating system [here][2].
+
+Coding Style
+------
+ - Use two spaces for indentation, not tabs.
+ - Avoid trailing spaces.
+
+Testing
+-------
+
+We are using Capybara and Rspec for tests, both works out of the box once you run the bundle command. There is only one thing to consider: test files are under the `spec/` directory
+
+Contributing
+-------
+
+If you are going to contribute, clone the repo and make a pull request.
+
+
+[1]: https://rvm.io/rvm/install
+[2]: http://railsapps.github.io/installing-rails.html

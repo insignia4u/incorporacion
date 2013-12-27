@@ -1,0 +1,17 @@
+<%= form_for candidate, :url => candidates_path, :html => { :multipart => true } do |f| %>
+  <%= render 'shared/error_messages', model: candidate %>
+
+  <div><%= f.label :first_name %><br />
+  <%= f.text_field :first_name, :autofocus => true %></div>
+
+  <div><%= f.label :last_name %><br />
+  <%= f.text_field :last_name, :autofocus => true %></div>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :cv_file %> <br>
+  <%= f.file_field :cv_file %></div>
+
+  <div><%= f.submit "Create" %></div>
+<% end %>

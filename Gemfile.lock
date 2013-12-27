@@ -25,6 +25,16 @@ GIT
       rspec-expectations (= 2.14.0.rc1)
       rspec-mocks (= 2.14.0.rc1)
 
+GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: 6ac2509923ebad5a8c2caf23891d4d1bd99e6cdc
+  specs:
+    paperclip (3.5.2)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -64,6 +74,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.3)
+      climate_control (>= 0.0.3, < 1.0)
     code_analyzer (0.4.3)
       sexp_processor
     coffee-rails (4.0.1)
@@ -86,6 +100,11 @@ GEM
     dynamic_form (1.1.4)
     erubis (2.7.0)
     execjs (2.0.2)
+    factory_girl (4.3.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.3.0)
+      factory_girl (~> 4.3.0)
+      railties (>= 3.0.0)
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
@@ -208,11 +227,13 @@ DEPENDENCIES
   decent_exposure (= 2.3.0)
   devise
   dynamic_form
+  factory_girl_rails
   figaro
   inherited_resources (= 1.4.1)
   jbuilder (~> 1.2)
   jquery-rails
   launchy
+  paperclip!
   rails (= 4.0.2)
   rails_best_practices
   rspec-rails!

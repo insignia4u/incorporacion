@@ -15,6 +15,7 @@ gem 'dynamic_form'
 gem 'inherited_resources', '1.4.1'
 gem 'figaro'
 gem 'devise'
+gem "paperclip", github: "thoughtbot/paperclip"
 
 group :development, :test do
   gem 'sqlite3'
@@ -33,6 +34,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'launchy'
   gem 'simplecov',            require: false
+  gem "factory_girl_rails"
 end
 
 group :doc do

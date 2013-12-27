@@ -8,4 +8,5 @@ Incorporacion::Application.routes.draw do
   end
 
   root to: "home#index"
+  resources :candidates
 end

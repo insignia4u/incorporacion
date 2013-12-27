@@ -8,6 +8,7 @@ require 'rspec/autorun'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/email/rspec'
+require "paperclip/matchers"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -34,4 +35,10 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.include FactoryGirl::Syntax::Methods
+  config.include Paperclip::Shoulda::Matchers
+
+  config.include AuthenticationHelpers
+
 end

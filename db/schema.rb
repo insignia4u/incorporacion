@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131226185729) do
+ActiveRecord::Schema.define(version: 20131227150822) do
+
+  create_table "candidates", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "company_id"
+    t.string   "cv_file_file_name"
+    t.string   "cv_file_content_type"
+    t.integer  "cv_file_file_size"
+    t.datetime "cv_file_updated_at"
+  end
+
+  add_index "candidates", ["company_id"], name: "index_candidates_on_company_id"
 
   create_table "companies", force: true do |t|
     t.string   "name"

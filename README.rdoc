@@ -55,11 +55,6 @@ Testing
 
 We are using Capybara and Rspec for tests, both works out of the box once you run the bundle command. There is only one thing to consider: test files are under the `spec/` directory
 
-Contributing
--------
-
-If you are going to contribute, clone the repo and make a pull request.
-
 
 [1]: https://rvm.io/rvm/install
 [2]: http://railsapps.github.io/installing-rails.html

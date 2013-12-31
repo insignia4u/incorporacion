@@ -23,6 +23,7 @@ feature "User sign up" do
 
     expect(Company.where(name: attrs[:company])).to exist
     expect(User.where(email: attrs[:email])).to exist
+    expect(User.last.admin?).to be_true
     expect(User.last.company).to eql(Company.last)
     expect(current_path).to eql('/')
     expect(page).to have_content("Welcome! You have signed up successfully.")

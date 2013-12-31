@@ -16,6 +16,7 @@ gem 'inherited_resources', '1.4.1'
 gem 'figaro'
 gem 'devise'
 gem "paperclip", github: "thoughtbot/paperclip"
+gem 'virtus'
 
 group :development, :test do
   gem 'sqlite3'

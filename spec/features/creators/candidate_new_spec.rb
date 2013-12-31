@@ -35,7 +35,7 @@ feature "New Candidate" do
   scenario "with an unsigned in user" do
     visit '/candidates/new'
     expect(current_path).to eql new_user_session_path
-    
+
   end
 
 end

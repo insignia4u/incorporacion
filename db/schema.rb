@@ -11,7 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131227150822) do
+ActiveRecord::Schema.define(version: 20131230122530) do
+
+  create_table "action_categories", force: true do |t|
+    t.string   "name"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "action_categories", ["company_id"], name: "index_action_categories_on_company_id"
+  add_index "action_categories", ["name"], name: "index_action_categories_on_name", unique: true
+
+  create_table "candidate_actions", force: true do |t|
+    t.string   "description"
+    t.integer  "action_category_id"
+    t.integer  "candidate_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "candidate_actions", ["action_category_id"], name: "index_candidate_actions_on_action_category_id"
+  add_index "candidate_actions", ["candidate_id"], name: "index_candidate_actions_on_candidate_id"
+  add_index "candidate_actions", ["user_id"], name: "index_candidate_actions_on_user_id"
 
   create_table "candidates", force: true do |t|
     t.string   "first_name"

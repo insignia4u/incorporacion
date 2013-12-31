@@ -8,5 +8,7 @@ Incorporacion::Application.routes.draw do
   end
 
   root to: "home#index"
-  resources :candidates
+  resources :candidates do
+    resources :candidate_actions, path: 'actions'
+  end
 end

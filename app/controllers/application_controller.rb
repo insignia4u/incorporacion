@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
       return nil unless current_user
       @current_company ||= current_user.company
     end
-    
+
     helper_method :current_company
 end

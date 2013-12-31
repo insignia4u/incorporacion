@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :company
+  has_many :candidate_actions
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

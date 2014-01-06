@@ -28,6 +28,10 @@ group :development do
   gem 'rails_best_practices', require: false
 end
 
+group :production do
+  gem 'pg'
+end
+
 group :test do
   gem 'capybara',             '2.2.0'
   gem 'capybara-email',       github: 'dockyard/capybara-email'

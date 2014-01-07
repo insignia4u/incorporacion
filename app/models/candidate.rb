@@ -1,4 +1,6 @@
 class Candidate < ActiveRecord::Base
+  devise :invitable, :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :trackable, :validatable
   belongs_to :company
   has_many :candidate_actions
 

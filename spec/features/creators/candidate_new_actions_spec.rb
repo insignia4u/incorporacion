@@ -3,7 +3,7 @@ require "spec_helper"
 feature "Candidate actions" do
   given(:user) { create(:user) }
   given(:company) { user.company }
-  given(:candidate) { create(:candidate, company: company) }
+  given(:candidate) { create(:candidate, company:company) }
   given(:action_category) { build(:action_category, company: company) }
   given(:action) { build(:candidate_action, action_category: action_category) }
 

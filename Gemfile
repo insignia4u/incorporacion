@@ -17,6 +17,7 @@ gem 'figaro'
 gem 'devise'
 gem "paperclip", github: "thoughtbot/paperclip"
 gem 'virtus'
+gem 'devise_invitable'
 
 group :development, :test do
   gem 'sqlite3'

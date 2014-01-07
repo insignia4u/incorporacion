@@ -6,20 +6,21 @@ class CandidatesController < ApplicationController
 
 
   def index; end
-  
+
   def new; end
 
   def create
+    candidate.confirm! # Created by user
     if candidate.save
       redirect_to candidates_url, success: 'Candidate was successfully created.'
     else
       render :new
-    end    
+    end
   end
 
   private
 
     def candidate_params
-      params.require(:candidate).permit(:first_name, :last_name, :email, :cv_file)      
+      params.require(:candidate).permit(:first_name, :last_name, :email, :cv_file)
     end
 end

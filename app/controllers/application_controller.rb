@@ -11,5 +11,10 @@ class ApplicationController < ActionController::Base
       @current_company ||= current_user.company
     end
 
+    def authenticate_inviter!
+      authenticate_user!(:force => true)
+    end
+
+
     helper_method :current_company
 end

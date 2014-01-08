@@ -10,9 +10,16 @@ class CandidatesController < ApplicationController
   def new; end
 
   def create
-    candidate.confirm! # Created by user
     if candidate.save
       redirect_to candidates_url, success: 'Candidate was successfully created.'
+    else
+      render :new
+    end
+  end
+
+  def invite
+    if candidate.invite!
+      redirect_to candidates_url, success: 'Invitation was successfully sent.'
     else
       render :new
     end

@@ -1,5 +1,5 @@
-<%= form_for candidate, :url => candidates_path, :html => { :multipart => true } do |f| %>
-  <%= render 'shared/error_messages', model: candidate %>
+<%= form_for candidate, url:candidates_path, html:{multipart:true} do |f| %>
+  <%= render 'shared/error_messages', model:candidate %>
 
   <div><%= f.label :first_name %><br />
   <%= f.text_field :first_name, :autofocus => true %></div>
@@ -14,5 +14,5 @@
   <%= f.file_field :cv_file %></div>
 
   <div><%= f.submit "Create" %></div>
-  <div><%= f.submit "Invite Candidate" %></div>
+  <div><%= link_to "Invite", candidate_invite_path(candidate) if candidate.id %></div>
 <% end %>

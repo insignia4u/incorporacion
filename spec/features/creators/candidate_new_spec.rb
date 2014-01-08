@@ -20,20 +20,6 @@ feature "New Candidate" do
 
   end
 
-  scenario "with valid data sending invitations" do
-    login_with(user)
-    visit '/candidates/new'
-
-    fill_in 'candidate[first_name]',    with: candidate[:first_name]
-    fill_in 'candidate[last_name]',     with: candidate[:last_name]
-    fill_in 'candidate[email]',         with: candidate[:email]
-
-    find_button('Invite Candidate').click
-
-    expect( company.candidates.where(email: candidate[:email]) ).to exist
-    expect(current_path).to eql '/candidates'
-  end
-
   scenario "with invalid data" do
     login_with(user)
     visit '/candidates/new'

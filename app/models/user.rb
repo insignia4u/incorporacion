@@ -3,8 +3,7 @@ class User < ActiveRecord::Base
   has_many :candidate_actions
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :invitable
+         :recoverable, :rememberable, :trackable, :validatable
 
   validates :company, :full_name, presence: true
 

@@ -82,6 +82,41 @@ ActiveRecord::Schema.define(version: 20140114114045) do
     t.datetime "updated_at"
   end
 
+  create_table "tasks", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "completed_on"
+    t.integer  "training_program_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tasks_candidates", force: true do |t|
+    t.integer  "candidate_id"
+    t.integer  "task_id"
+    t.datetime "completed_on", default: '2014-01-09 20:49:34'
+  end
+
+  add_index "tasks_candidates", ["candidate_id", "task_id"], name: "index_task_candidate", unique: true
+
+  create_table "training_candidates", force: true do |t|
+    t.datetime "started_on",          default: '2014-01-09 18:37:02'
+    t.datetime "ended_on"
+    t.integer  "training_program_id"
+    t.integer  "candidate_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "training_candidates", ["training_program_id", "candidate_id"], name: "index_training_candidate", unique: true
+
+  create_table "training_programs", force: true do |t|
+    t.string   "name"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "full_name"
     t.string   "email",                  default: "",    null: false

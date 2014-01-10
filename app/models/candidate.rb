@@ -2,6 +2,9 @@ class Candidate < ActiveRecord::Base
   devise :database_authenticatable, :confirmable, :invitable
   belongs_to :company
   has_many :candidate_actions
+  has_many :training_candidate
+  has_many :tasks, through: :tasks_candidates
+  has_many :training_programs, through: :training_candidate
 
   has_attached_file :cv_file
 

@@ -1,0 +1,14 @@
+<%= form_for training_program do |f| %>
+  <%= render 'shared/error_messages', model:training_program %>
+
+  <div><%= f.label :name %><br>
+  <%= f.text_field :name, autofocus:true %></div>
+
+  <fieldset>
+    <%= f.fields_for :tasks, tasks do |ft| %>
+      <%= render 'task_form', f: ft %> <br>
+    <% end %>
+  </fieldset>
+
+  <div><%= f.submit "Create" %></div>
+<% end -%>

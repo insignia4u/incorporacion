@@ -31,10 +31,14 @@
                 <%= link_to "Invite", candidate_invite_path(candidate), class:'btn' %>
                 <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Edit Username</a><a href="#">Disable Account</a><a href="#">Destroy</a></li>
+                  <li>
+                    <%= link_to 'Show', candidate_path(candidate) %>
+                    <a href="#">Disable Account</a>
+                    <a href="#">Destroy</a>
+                  </li>
                 </ul>
               </div>
-              
+
             </td>
           </tr>
         <% end -%>

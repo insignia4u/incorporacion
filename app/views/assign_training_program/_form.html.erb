@@ -1,0 +1,10 @@
+<%= form_for training_candidate,
+             url:training_program_assign_index_path, method: :post do |f| %>
+  <%= render 'shared/error_messages', model:training_candidate %>
+  <div>
+    <%= f.label :candidate %>
+    <%= f.select :candidate_id,
+                 SelectDecorator.collection(candidates, :first_name) %>
+  </div>
+  <%= f.submit 'Assign' %>
+<% end -%>

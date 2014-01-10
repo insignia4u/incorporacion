@@ -1,0 +1,14 @@
+<h1>Training Programs</h1>
+<%= link_to 'Create', new_training_program_path %>
+<% if training_programs %>
+  <table>
+  <% training_programs.each do |program| %>
+    <tr>
+      <td><%= program.name %></td>
+      <td><%= link_to 'Assign to',
+                      new_training_program_assign_path(program) unless candidate %></td>
+      <td><%= link_to 'Tasks', training_program_path(program) %></td>
+    </tr>
+  <% end -%>
+  </table>
+<% end -%>

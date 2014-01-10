@@ -11,5 +11,7 @@
     <% end -%>
   </ul>
 <% end -%>
+<%= link_to 'Training Programs',
+    candidate_training_programs_path(candidate) %>
 
 <%= link_to "Register a new action", "/candidates/#{candidate.id}/actions/new" %>

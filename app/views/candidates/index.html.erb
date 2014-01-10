@@ -1,0 +1,9 @@
+<h1>Candidates</h1>
+
+<% if candidates %>
+  <ul>
+  <% candidates.each do |candidate| %>
+    <li><%= candidate.id %> - <%= link_to "Invite", candidate_invite_path(candidate) %></li>
+  <% end -%>
+  </ul>
+<% end -%>

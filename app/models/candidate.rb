@@ -1,4 +1,5 @@
 class Candidate < ActiveRecord::Base
+  devise :database_authenticatable, :confirmable, :invitable
   belongs_to :company
   has_many :candidate_actions
 

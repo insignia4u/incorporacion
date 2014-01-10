@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131231151555) do
+ActiveRecord::Schema.define(version: 20140106184104) do
 
   create_table "action_categories", force: true do |t|
     t.string   "name"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20131231151555) do
   create_table "candidates", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email"
+    t.string   "email",                  default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "company_id"
@@ -47,9 +47,34 @@ ActiveRecord::Schema.define(version: 20131231151555) do
     t.string   "cv_file_content_type"
     t.integer  "cv_file_file_size"
     t.datetime "cv_file_updated_at"
+    t.string   "encrypted_password",     default: ""
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.string   "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit"
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
   end
 
   add_index "candidates", ["company_id"], name: "index_candidates_on_company_id"
+  add_index "candidates", ["confirmation_token"], name: "index_candidates_on_confirmation_token", unique: true
+  add_index "candidates", ["email"], name: "index_candidates_on_email", unique: true
+  add_index "candidates", ["invitation_token"], name: "index_candidates_on_invitation_token", unique: true
+  add_index "candidates", ["invited_by_id"], name: "index_candidates_on_invited_by_id"
+  add_index "candidates", ["reset_password_token"], name: "index_candidates_on_reset_password_token", unique: true
 
   create_table "companies", force: true do |t|
     t.string   "name"

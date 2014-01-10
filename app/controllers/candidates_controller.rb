@@ -6,7 +6,7 @@ class CandidatesController < ApplicationController
 
 
   def index; end
-  
+
   def new; end
 
   def create
@@ -14,12 +14,20 @@ class CandidatesController < ApplicationController
       redirect_to candidates_url, success: 'Candidate was successfully created.'
     else
       render :new
-    end    
+    end
+  end
+
+  def invite
+    if candidate.invite!
+      redirect_to candidates_url, success: 'Invitation was successfully sent.'
+    else
+      render :new
+    end
   end
 
   private
 
     def candidate_params
-      params.require(:candidate).permit(:first_name, :last_name, :email, :cv_file)      
+      params.require(:candidate).permit(:first_name, :last_name, :email, :cv_file)
     end
 end

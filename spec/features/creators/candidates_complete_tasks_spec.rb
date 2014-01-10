@@ -6,9 +6,9 @@ feature "Complete a task" do
 
   scenario "with valid data" do
     login_with(candidate)
-    post "tasks/#{task.id}/complete"
+    page.driver.post task_complete_path(task)
 
-    expect(task.candidates.where(id:candidate.id)).to exist
+    expect( task.candidates.where(email:candidate.email) ).to exist
   end
 
 end

@@ -22,6 +22,9 @@ Incorporacion::Application.routes.draw do
     resources :candidate_actions, path: 'actions'
   end
 
+  resources :task do
+    post 'complete', to:'tasks#complete'
+  end
   resources :training_programs do
     resources :tasks
     resources :assign_training_program, as: :assign, path: 'assign'

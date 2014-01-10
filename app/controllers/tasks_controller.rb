@@ -1,27 +1,16 @@
-class TrainingProgramsController < ApplicationController
-  before_filter :authenticate_user!
+class TasksController < ApplicationController
+  before_filter :authenticate_candidate!
 
-  expose(:candidate)
-  expose(:tasks) { candidate.tasks }
+  expose(:task)
 
-  def index; end
-
-  def new
-    3.times { tasks.build }
-  end
-
-  def create
-    if training_program.save
-      redirect_to training_programs_url, success: 'Training Program was successfully created.'
+  def complete
+    task.candidates << current_candidate
+    if task.save
+      status = 200
     else
-      render :new
+      status = 500
     end
+    render json: status
   end
 
-  private
-
-    def training_program_params
-      params.require(:training_program).permit(:name,
-        tasks_attributes:[:title, :description, :_destroy])
-    end
 end

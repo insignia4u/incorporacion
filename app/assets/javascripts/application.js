@@ -13,4 +13,23 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require bootstrap
+//= require jquery.knob
+//= require d3.v3.min
+//= require jquery.sparkline.min
+//= require toastr
+//= require jquery.tablesorter.min
+//= require jquery.peity.min
+//= require fullcalendar.min
+//= require gcal
+//= require setup
+
+//= require d3-setup
+// require jquery.flot
+// require flot-chart-setup
+// require d3barchart
+//= require_self
+
+
+protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://'; address = protocol + window.location.host + window.location.pathname + '/ws'; socket = new WebSocket(address);
+socket.onmessage = function(msg) { msg.data == 'reload' && window.location.reload() }

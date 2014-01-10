@@ -9,12 +9,15 @@
 <body>
 
 <%= render 'shared/main_nav_bar' %>
-<%= render 'shared/sub_main_nav_bar' %>
-<div class="page">
-  <div class="page-container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+<div class="container">
+  <div class="row">
+    <div class="span6 offset2">
+      <div class="login">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </div>
+    </div>
   </div>
 </div>
 

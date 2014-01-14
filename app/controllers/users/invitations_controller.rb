@@ -1,5 +1,6 @@
 class Users::InvitationsController < Devise::InvitationsController
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :authorized_admin, only: [:new]
 
   protected
 
@@ -10,5 +11,10 @@ class Users::InvitationsController < Devise::InvitationsController
 
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:invite).concat [:full_name]
+    end
+
+    def authorized_admin
+      return true if current_user.admin?
+      redirect_to root_path, alert: 'Unhautorized Access'
     end
 end

@@ -1,0 +1,31 @@
+<div id="in-nav">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <ul class="pull-right">
+          <% if current_user %>
+            <li>
+              <a href=""><%= current_user.full_name if current_user %></a>
+            </li>
+          <% else %>
+            <li><%= link_to('Login as User', new_user_session_path) %></li>
+          <% end -%>
+          <% if current_candidate %>
+            <li><a href=""><%= current_candidate.full_name %></a></li>
+          <% else %>
+            <li>
+              <%= link_to 'Login as Candidate', new_candidate_session_path %>
+            </li>
+          <% end -%>
+
+          <% if current_user || current_candidate %>
+            <li><%= link_to 'Logout', destroy_user_session_path,
+                            method: :delete %></li>
+          <% end -%>
+        </ul>
+        <a id="logo" href="<%= root_url %>">
+          <h4>My<strong>Admin</strong></h4></a>
+      </div>
+    </div>
+  </div>
+</div>

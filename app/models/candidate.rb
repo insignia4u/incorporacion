@@ -10,4 +10,8 @@ class Candidate < ActiveRecord::Base
 
   validates_attachment :cv_file,
                         content_type: { content_type: "application/pdf" }
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

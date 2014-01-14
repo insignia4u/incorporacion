@@ -7,8 +7,16 @@
           <li>
           <%= link_to root_path, class:get_active_class('home') do %>
             <i class="batch home"></i><br>Dashboard</a>
-          <% end -%>                
+          <% end -%>
           </li>
+
+          <% if current_user.admin? %>
+            <li>
+              <%= link_to users_path, class:get_active_class('users') do %>
+                <i class="batch users"></i><br>Collaborators
+              <% end -%>
+            </li>
+          <% end -%>
 
           <% if current_user %>
           <!--

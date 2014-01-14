@@ -8,8 +8,9 @@ class ApplicationController < ActionController::Base
 
   protected
     def current_company
-      return nil unless current_user
-      @current_company ||= current_user.company
+      return nil unless current_user || current_candidate
+      return @current_company ||= current_user.company if current_user
+      return @current_company ||= current_candidate.company if current_candidate
     end
 
     def authenticate_inviter!
@@ -23,7 +24,6 @@ class ApplicationController < ActionController::Base
         "application"
       end
     end
-
 
     helper_method :current_company
 end

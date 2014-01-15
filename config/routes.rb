@@ -1,6 +1,7 @@
 Incorporacion::Application.routes.draw do
   devise_for :users, controllers: {
-    registrations:'users/registrations'
+    registrations:'users/registrations',
+    invitations:  'users/invitations'
   }
 
   devise_for :candidates, controllers: {
@@ -12,6 +13,7 @@ Incorporacion::Application.routes.draw do
   end
 
   root to: "home#index"
+  get 'users', to: 'users#index'
   resources :candidates do
     get 'invite', to: 'candidates#invite', as: :invite
     resources :candidate_actions, path: 'actions'

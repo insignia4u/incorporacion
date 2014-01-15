@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <h2><%= t "devise.invitations.new.header" %></h2>
+
+      <%= form_for resource, as:resource_name,
+                   url:invitation_path(resource_name),
+                   html: { method: :post, class:'form-horizontal'} do |f| %>
+        <% if resource.errors.any? %>
+          <div class="alert alert-error">
+            <%= devise_error_messages! %>
+          </div>
+        <% end %>
+
+        <div class="control-group">
+          <%= f.label :full_name, class:'control-label' %>
+          <div class="controls">
+            <%= f.text_field :full_name, :autofocus => true %> </div>
+        </div>
+
+        <% resource.class.invite_key_fields.each do |field| -%>
+        <div class="control-group">
+          <%= f.label field, class:'control-label' %>
+          <div class="controls">
+            <%= f.text_field field %> </div>
+        </div>
+        <% end -%>
+
+        <div class="control-group">
+          <div class="controls">
+            <%= f.submit t("devise.invitations.new.submit_button"), class:'btn' %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

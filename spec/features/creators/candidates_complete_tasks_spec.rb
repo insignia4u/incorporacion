@@ -2,7 +2,7 @@ require "spec_helper"
 
 feature "Complete a task" do
   given(:candidate) { create(:candidate_with_company) }
-  given(:task) { create(:task) }
+  given(:task) { create(:task_with_training_program_saved) }
 
   scenario "with valid data" do
     login_with(candidate)

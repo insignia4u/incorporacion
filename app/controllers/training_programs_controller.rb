@@ -1,5 +1,6 @@
 class TrainingProgramsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, only: [:new, :create]
+  before_filter :authorized_admin, only: [:new, :create]
 
   expose(:training_programs, strategy:TrainingProgramStrategy)
   expose(:training_program, attributes: :training_program_params)

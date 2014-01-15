@@ -12,6 +12,12 @@
 
           <% if current_user %>
 
+            <li>
+              <%= link_to training_programs_path,
+                          class:get_active_class('training_programs') do %>
+                <i class="batch forms"></i><br>Training Programs
+              <% end -%>
+            </li>
             <% if current_user.admin? %>
               <li>
                 <%= link_to users_path, class:get_active_class('users') do %>
@@ -37,7 +43,12 @@
           <% end -%>
 
           <% if current_candidate %>
-
+            <li>
+              <%= link_to training_programs_path,
+                          class:get_active_class('training_programs') do %>
+                <i class="batch forms"></i><br>My Training Programs
+              <% end -%>
+            </li>
           <% end -%>
         <% end -%>
         </ul>

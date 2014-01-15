@@ -5,7 +5,6 @@ class TrainingCandidate < ActiveRecord::Base
   validates :candidate, :training_program, presence:true
 
   def completed?
-    return true unless ended_on.blank?
-    false
+    !ended_on.blank?
   end
 end

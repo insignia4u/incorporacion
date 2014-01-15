@@ -5,12 +5,12 @@ class TasksController < ApplicationController
 
   def complete
     task.candidates << current_candidate
-    if task.save
-      status = 200
-    else
-      status = 500
+    if current_candidate.complete_training_program?(task.training_program)
+      ProgramTrainingMailer.completed_program(current_candidate,task.training_program).deliver
+      flash[:success] = 'Training program completed successfully.'
     end
-    render json: status
+    flash[:success] = 'Task completed successfully.'
+    render :js => "window.location = '#{training_program_path(task.training_program)}'"
   end
 
 end

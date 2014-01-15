@@ -18,4 +18,8 @@ class Candidate < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def complete_training_program?(training_program)
+    task_candidate.count === training_program.tasks.count
+  end
 end

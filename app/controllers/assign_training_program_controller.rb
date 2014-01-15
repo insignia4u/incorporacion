@@ -4,10 +4,7 @@ class AssignTrainingProgramController < ApplicationController
   expose(:training_programs) { current_company.training_programs }
   expose(:training_program, ancestor: :training_programs)
   expose(:training_candidate, attributes: :training_candidate_params)
-  expose(:candidates) do
-    ids = TrainingCandidate.where(training_program_id: training_program.id)
-    current_company.candidates.where.not(id:ids)
-  end
+  expose(:candidates, strategy:UnassignedTrainingCandidateStrategy)
 
   def new; end
 

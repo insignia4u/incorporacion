@@ -1,14 +1,21 @@
-<%= form_for training_program do |f| %>
+<%= form_for training_program, html: { class:'form-horizontal' } do |f| %>
   <%= render 'shared/error_messages', model:training_program %>
 
-  <div><%= f.label :name %><br>
-  <%= f.text_field :name, autofocus:true %></div>
+  <div class="control-group">
+    <%= f.label :name, class:'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, autofocus:true %></div>
+  </div>
 
-  <fieldset>
+  <fieldset class="form-inline">
+    <legend>Tasks</legend>
     <%= f.fields_for :tasks, tasks do |ft| %>
       <%= render 'task_form', f: ft %> <br>
     <% end %>
   </fieldset>
 
-  <div><%= f.submit "Create" %></div>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit "Create", class:'btn' %></div>
+  </div>
 <% end -%>

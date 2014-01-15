@@ -25,5 +25,10 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def authorized_admin
+      return true if current_user.admin?
+      redirect_to root_path, alert: 'Unhautorized Access'
+    end
+
     helper_method :current_company
 end

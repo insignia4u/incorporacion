@@ -21,7 +21,7 @@ class CandidatesController < ApplicationController
     if candidate.invite!
       render json: { success: 'Invitation was successfully sent.' }
     else
-      render json: { error: "Invitation wasn't sent." }
+      render json: { error: "Invitation wasn't sent.", status:403 }
     end
   end
 

@@ -3,7 +3,7 @@ class TrainingProgramStrategy < DecentExposure::Strategy
   delegate :current_candidate, to: :controller
 
   def resource
-    current_company = current_user.company
+    current_company = current_user.company if current_user
     return current_company.training_programs unless current_candidate
     current_candidate.training_programs
   end

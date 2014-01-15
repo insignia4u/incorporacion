@@ -10,15 +10,15 @@
           <% end -%>
           </li>
 
-          <% if current_user.admin? %>
-            <li>
-              <%= link_to users_path, class:get_active_class('users') do %>
-                <i class="batch users"></i><br>Collaborators
-              <% end -%>
-            </li>
-          <% end -%>
-
           <% if current_user %>
+
+            <% if current_user.admin? %>
+              <li>
+                <%= link_to users_path, class:get_active_class('users') do %>
+                  <i class="batch users"></i><br>Collaborators
+                <% end -%>
+              </li>
+            <% end -%>
           <!--
           <li><span class="label label-important pull-right">08</span><a href="stream.html"><i class="batch stream"></i><br>Stream</a></li>
           <li><span class="label label-important pull-right">04</span><a href="messages.html"><i class="batch plane"></i><br>Messages</a></li>

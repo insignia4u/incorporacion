@@ -9,6 +9,7 @@ FactoryGirl.define do
     confirmation_sent_at          DateTime.now
     confirmed_at                  DateTime.now
     sequence(:confirmation_token) {|n| "n"}
+    admin                 true
     company
   end
 end

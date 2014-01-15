@@ -6,7 +6,7 @@
       <%= form_for resource, as:resource_name,
                    url:invitation_path(resource_name),
                    html: { method: :post, class:'form-horizontal'} do |f| %>
-        <% if !resource.errors.empty? %>
+        <% if resource.errors.any? %>
           <div class="alert alert-error">
             <%= devise_error_messages! %>
           </div>

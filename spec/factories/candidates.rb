@@ -14,6 +14,8 @@ FactoryGirl.define do
     confirmation_token      nil
     confirmed_at            DateTime.now
 
+    invitation_accepted_at  DateTime.now
+
     factory :candidate_with_company do
       company
     end

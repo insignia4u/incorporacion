@@ -4,7 +4,8 @@
       <%= link_to 'Send Email', "mailto:#{candidate.email}", class:'btn pull-right' %>
       <h4 class="header"><%= "#{candidate.first_name} #{candidate.last_name}" %></h4>
 
-        <%= link_to candidate.email, "mailto:#{candidate.email}", class:'btn pull-right' %> <br>
+        <%= link_to candidate.email, "mailto:#{candidate.email}" %>
+        <br><br>
         <%= link_to "Candidate's CV", candidate.cv_file.url, class:'btn' %> <br>
 
         <br>
@@ -17,15 +18,8 @@
             <% end -%>
           </ul>
         <% else %>
-          <div class="alert alert-info">Not actions yet.</div>
+          <div class="alert alert-info">Not actions created yet.</div>
         <% end -%>
-
-        <br>
-        <%= link_to 'Training Programs',
-            candidate_training_programs_path(candidate), class:'btn pull-right' %>
-        <h4 class="header">Training Programs</h4>
-
-
     </div>
   </div>
 </div>

@@ -39,7 +39,7 @@
               </div>
 
               <div class="btn-group">
-                <%= link_to "Invite", candidate_invite_path(candidate), remote:true, class:"btn #{'disabled' if candidate.confirmed?}" %>
+                <%= link_to "Invite", candidate_invite_path(candidate), class:"btn #{'disabled' if candidate.confirmed?}" %>
                 <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
                 <ul class="dropdown-menu">
                   <li>

@@ -11,7 +11,8 @@ class CandidatesController < ApplicationController
 
   def create
     if candidate.save
-      redirect_to candidates_url, success: 'Candidate was successfully created.'
+      flash[:success] = 'Candidate was successfully created.'
+      redirect_to candidates_url
     else
       render :new
     end
@@ -19,10 +20,11 @@ class CandidatesController < ApplicationController
 
   def invite
     if candidate.invite!
-      render json: { success: 'Invitation was successfully sent.' }
+      flash[:success] = 'Invitation was successfully sent.'
     else
-      render json: { error: "Invitation wasn't sent.", status:403 }
+      flash[:error] = "Invitation wasn't sent."
     end
+    redirect_to candidates_url
   end
 
   private

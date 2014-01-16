@@ -16,7 +16,7 @@
 //= require bootstrap
 //= require jquery.knob
 //= require d3.v3.min
-//= require jquery.sparkline.min
+// require jquery.sparkline.min
 //= require toastr
 //= require jquery.tablesorter.min
 //= require jquery.peity.min
@@ -33,3 +33,18 @@
 
 protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://'; address = protocol + window.location.host + window.location.pathname + '/ws'; socket = new WebSocket(address);
 socket.onmessage = function(msg) { msg.data == 'reload' && window.location.reload() }
+
+toastr.options = {
+  positionClass: 'toast-bottom-left'
+};
+
+$('.alert-system').each(function() {
+  var type = this.dataset.type;
+  var html = this.innerHTML;
+  switch(type) {
+    case 'error': toastr.error(html); break;
+    case 'warning': toastr.warning(html); break;
+    case 'success': toastr.success(html); break;
+    default: toastr.info(html); break;
+  }
+});

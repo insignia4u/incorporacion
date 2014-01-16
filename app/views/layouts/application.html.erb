@@ -3,7 +3,6 @@
 <head>
   <title>Incorporacion</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -12,12 +11,11 @@
 <%= render 'shared/sub_main_nav_bar' %>
 <div class="page">
   <div class="page-container">
-    <% if notice %><p class="alert alert-success"><%= notice %></p><% end -%>
-    <% if alert %><p class="alert alert-error"><%= alert %></p><% end -%>
-    <% if flash[:success] %><p class="alert alert-success"><%= flash[:success] %></p><% end -%>
+    <%= render 'shared/alerts' %>
     <%= yield %>
   </div>
 </div>
 
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 </body>
 </html>

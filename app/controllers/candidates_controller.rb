@@ -3,6 +3,7 @@ class CandidatesController < ApplicationController
 
   expose(:candidates) { current_company.candidates }
   expose(:candidate, attributes: :candidate_params)
+  expose(:feeds) { CandidateFeedService.build_with(candidate) }
 
 
   def index; end

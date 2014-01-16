@@ -11,11 +11,15 @@ class TrainingProgram < ActiveRecord::Base
     reject_if:lambda {|attr| attr['title'].blank?},
     allow_destroy:true
 
+  def self.completed_by(candidate)
+    candidate.training_programs.select {|program| program.completed_by?(candidate) }
+  end
+
   def completed_by?(candidate)
-    candidate.task_candidate.count === tasks.count
+    candidate.task_candidate.where(task_id: tasks).count === tasks.count
   end
 
   def task_completed(candidate)
-    candidate.task_candidate.where(task_id:tasks).count
+    candidate.task_candidate.completed.count
   end
 end

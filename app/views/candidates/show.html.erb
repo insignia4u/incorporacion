@@ -20,6 +20,16 @@
         <% else %>
           <div class="alert alert-info">Not actions created yet.</div>
         <% end -%>
+
+        <h4 class="header">Milestones</h4>
+        <div class="stream">
+          <% feeds.each do |feed| %>
+            <div class="item">
+              <p class="date"><%= time_ago_in_words(feed[:completed_on]) %></p>
+              <%= feed[:message] %>
+            </div>
+          <% end -%>
+        </div>
     </div>
   </div>
 </div>

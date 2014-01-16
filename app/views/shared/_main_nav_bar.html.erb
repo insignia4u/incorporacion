@@ -14,7 +14,7 @@
             <li><%= link_to('Login as User', new_user_session_path) %></li>
           <% end -%>
           <% if current_candidate %>
-            <li><a href=""><%= current_candidate.full_name %></a></li>
+            <li><%= current_candidate.full_name %></li>
           <% else %>
             <li>
               <%= link_to 'Login as Candidate', new_candidate_session_path %>

@@ -18,6 +18,7 @@ gem 'devise'
 gem "paperclip", github: "thoughtbot/paperclip"
 gem 'virtus'
 gem 'devise_invitable'
+gem 'draper', '~> 1.3'
 
 group :development, :test do
   gem 'sqlite3'

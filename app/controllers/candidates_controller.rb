@@ -19,9 +19,9 @@ class CandidatesController < ApplicationController
 
   def invite
     if candidate.invite!
-      redirect_to candidates_url, success: 'Invitation was successfully sent.'
+      render json: { success: 'Invitation was successfully sent.' }
     else
-      render :new
+      render json: { error: "Invitation wasn't sent.", status:403 }
     end
   end
 

@@ -1,15 +1,31 @@
-<h1><%= "#{candidate.first_name} #{candidate.last_name}" %></h1>
-<%= link_to candidate.email, "mailto:#{candidate.email}" %> <br>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <%= link_to 'Send Email', "mailto:#{candidate.email}", class:'btn pull-right' %>
+      <h4 class="header"><%= "#{candidate.first_name} #{candidate.last_name}" %></h4>
 
-<%= link_to "Candidate's CV", candidate.cv_file.url %> <br>
+        <%= link_to candidate.email, "mailto:#{candidate.email}", class:'btn pull-right' %> <br>
+        <%= link_to "Candidate's CV", candidate.cv_file.url, class:'btn' %> <br>
 
-<h2>Actions</h2>
-<% if candidate.candidate_actions %>
-  <ul>
-    <% candidate.candidate_actions.each do |action| %>
-    <li><%= action.description %></li>
-    <% end -%>
-  </ul>
-<% end -%>
+        <br>
+        <%= link_to "Register a new action", "/candidates/#{candidate.id}/actions/new", class:'btn pull-right' %>
+        <h4 class="header">Actions</h4>
+        <% if candidate.candidate_actions.any? %>
+          <ul>
+            <% candidate.candidate_actions.each do |action| %>
+            <li><%= action.description %></li>
+            <% end -%>
+          </ul>
+        <% else %>
+          <div class="alert alert-info">Not actions yet.</div>
+        <% end -%>
 
-<%= link_to "Register a new action", "/candidates/#{candidate.id}/actions/new" %>
+        <br>
+        <%= link_to 'Training Programs',
+            candidate_training_programs_path(candidate), class:'btn pull-right' %>
+        <h4 class="header">Training Programs</h4>
+
+
+    </div>
+  </div>
+</div>

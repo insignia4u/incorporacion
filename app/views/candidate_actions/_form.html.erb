@@ -1,11 +1,22 @@
-<%= form_for candidate_action, url: candidate_candidate_actions_path do |f| %>
+<%= form_for candidate_action, url: candidate_candidate_actions_path,
+             html: { class:'form-horizontal' } do |f| %>
   <%= render 'shared/error_messages', model: candidate_action %>
 
-  <div><%= f.label :category_name %><br />
-  <%= f.text_field :category_name %></div>
+  <div class="control-group">
+    <%= f.label :category_name, class:'control-label' %>
+    <div class="controls">
+      <%= f.text_field :category_name %></div>
+  </div>
 
-  <div><%= f.label :description %><br />
-  <%= f.text_area :description %></div>
+  <div class="control-group">
+    <%= f.label :description, class:'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description %></div>
+  </div>
 
-  <div><%= f.submit "Register" %></div>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit "Register", class:'btn' %>
+    </div>
+  </div>
 <% end %>

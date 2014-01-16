@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :candidate do
-    first_name            'Jhon'
+    sequence(:first_name) {|n| "Jhon-#{n}"}
     last_name             'Doe'
     sequence(:email)      {|n| "candidate-#{n}@company.com"}
 

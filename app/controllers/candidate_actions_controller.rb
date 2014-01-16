@@ -15,7 +15,7 @@ class CandidateActionsController < ApplicationController
 
   def create
     if candidate_action.save
-      redirect_to candidate_candidate_actions_path, success: 'candidate_action was successfully created.'
+      redirect_to candidate_path(candidate), success: 'candidate_action was successfully created.'
     else
       render :new
     end

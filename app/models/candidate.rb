@@ -2,6 +2,10 @@ class Candidate < ActiveRecord::Base
   devise :database_authenticatable, :confirmable, :invitable
   belongs_to :company
   has_many :candidate_actions
+  has_many :task_candidate
+  has_many :tasks, through: :task_candidate
+  has_many :training_candidate
+  has_many :training_programs, through: :training_candidate
 
   has_attached_file :cv_file
 
@@ -13,5 +17,9 @@ class Candidate < ActiveRecord::Base
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def complete_training_program?(training_program)
+    task_candidate.count === training_program.tasks.count
   end
 end

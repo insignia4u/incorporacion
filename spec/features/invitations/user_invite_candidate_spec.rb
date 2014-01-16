@@ -12,10 +12,6 @@ feature "Invite Candidate" do
     open_email(candidate.email)
   end
 
-  scenario "after send" do
-    expect(current_path).to eql '/candidates'
-  end
-
   scenario 'with correct content' do
     expect(current_email).to have_content candidate.email
   end

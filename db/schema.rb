@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20140114114045) do
   create_table "task_candidates", force: true do |t|
     t.integer  "candidate_id"
     t.integer  "task_id"
-    t.datetime "completed_on", default: '2014-01-15 12:47:59'
+    t.datetime "completed_on"
   end
 
   add_index "task_candidates", ["candidate_id", "task_id"], name: "index_task_candidate", unique: true

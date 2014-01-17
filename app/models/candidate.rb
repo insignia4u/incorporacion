@@ -20,6 +20,6 @@ class Candidate < ActiveRecord::Base
   end
 
   def complete_training_program?(training_program)
-    task_candidate.count === training_program.tasks.count
+    task_candidate.where(task_id: training_program.tasks).count === training_program.tasks.count
   end
 end

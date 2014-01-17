@@ -17,7 +17,7 @@ FactoryGirl.define do
     invitation_accepted_at  DateTime.now
 
     factory :candidate_with_company do
-      company
+      company { create(:company) }
     end
   end
 end

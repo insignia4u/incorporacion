@@ -12,15 +12,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource.save
       resource.confirm! #confirm registration
       yield resource if block_given?
-      if resource.active_for_authentication?
-        set_flash_message :notice, :signed_up if is_flashing_format?
-        sign_up(resource_name, resource)
-        respond_with resource, :location => after_sign_up_path_for(resource)
-      else
-        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
-        expire_data_after_sign_in!
-        respond_with resource, :location => after_inactive_sign_up_path_for(resource)
-      end
+      set_flash_message :notice, :signed_up if is_flashing_format?
+      sign_up(resource_name, resource)
+      respond_with resource, :location => after_sign_up_path_for(resource)
     else
       clean_up_passwords resource
       respond_with resource
@@ -34,7 +28,7 @@ protected
     devise_parameter_sanitizer.for(:sign_up) do |params|
       params.permit(
         :full_name, :email, :password, :password_confirmation,
-        :company_attributes => (:name)
+        company_attributes: [:name]
       )
     end
   end

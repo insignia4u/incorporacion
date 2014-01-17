@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe TrainingCandidate do
   describe "Validations" do
-    it { should validate_presence_of(:candidate) }
-    it { should validate_presence_of(:training_program) }
+    it { should validate_uniqueness_of(:candidate_id).scoped_to(:training_program_id)
+                                                     .with_message('should assigned one time') }
   end
 
   describe "it when was created" do

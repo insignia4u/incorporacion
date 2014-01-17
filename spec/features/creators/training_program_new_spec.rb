@@ -38,4 +38,12 @@ feature "New Training Program" do
     expect(current_path).to eql new_user_session_path
   end
 
+  scenario "with an unadmin in user" do
+    user.admin = false
+    user.save
+    login_with(user)
+    visit '/training_programs/new'
+    expect(current_path).to eql root_path
+  end
+
 end

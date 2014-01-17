@@ -10,7 +10,7 @@ describe TrainingProgram do
     it { should validate_uniqueness_of(:name) }
   end
 
-  describe 'Completition of it' do
+  describe 'Completed' do
     before do
       @program = create(:training_program_with_tasks)
       @program2 = create(:training_program_with_tasks)
@@ -28,6 +28,10 @@ describe TrainingProgram do
 
     it "should list all completed" do
       expect( TrainingProgram.completed_by(@candidate).count ).to eql(1)
+    end
+
+    it "should return task completed" do
+      expect( @program.task_completed(@candidate) ).to eql(@program.tasks.count)
     end
 
   end

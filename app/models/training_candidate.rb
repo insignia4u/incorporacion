@@ -2,7 +2,8 @@ class TrainingCandidate < ActiveRecord::Base
   belongs_to :candidate
   belongs_to :training_program
 
-  validates :candidate, :training_program, presence:true
+  validates :candidate_id, uniqueness: { scope: [:training_program_id],
+                        message: 'should assigned one time' }
 
   scope :completed, -> { where.not(ended_on:nil) }
 

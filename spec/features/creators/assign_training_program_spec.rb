@@ -25,4 +25,13 @@ feature "Assign a Training Program" do
     expect(page).not_to have_content candidate.first_name
   end
 
+  scenario "with invalida data" do
+    select candidates.first.first_name, from:'training_candidate[candidate_id]'
+    candidates.first.training_programs << program
+    find_button('Assign').click
+
+    expect( candidates.first.training_programs.count ).to eql(1)
+    expect(page).to have_content 'Candidate should assigned one time'
+  end
+
 end

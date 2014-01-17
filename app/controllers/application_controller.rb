@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include UserAdmin
   protect_from_forgery with: :exception
   layout :layout_by_resource
 
@@ -23,11 +24,6 @@ class ApplicationController < ActionController::Base
       else
         "application"
       end
-    end
-
-    def authorized_admin
-      return true if current_user.admin?
-      redirect_to root_path, alert: 'Unhautorized Access'
     end
 
     helper_method :current_company

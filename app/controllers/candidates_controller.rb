@@ -20,11 +20,8 @@ class CandidatesController < ApplicationController
   end
 
   def invite
-    if candidate.invite!
-      flash[:success] = 'Invitation was successfully sent.'
-    else
-      flash[:error] = "Invitation wasn't sent."
-    end
+    candidate.invite!
+    flash[:success] = 'Invitation was successfully sent.'
     redirect_to candidates_url
   end
 

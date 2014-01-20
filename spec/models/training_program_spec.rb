@@ -31,8 +31,21 @@ describe TrainingProgram do
     end
 
     it "should return task completed" do
-      expect( @program.task_completed(@candidate) ).to eql(@program.tasks.count)
+      @candidate.tasks << @program2.tasks
+      expect( @program.count_task_completed_by(@candidate) ).to eql(@program.tasks.count)
     end
 
+    it "should return the porcent of completitud" do
+      expect( @program.percent_of_completitud(@candidate) ).to eql(100)
+    end
+
+  end
+
+  describe "Tasks" do
+    before do
+      @program = create(:training_program_with_tasks)
+    end
+
+    it { expect(@program.has_tasks?).to be_true }
   end
 end

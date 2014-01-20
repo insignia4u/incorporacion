@@ -13,7 +13,7 @@ feature "Assign a Training Program" do
   end
 
   scenario "with valid data" do
-    select candidates.first.first_name, from:'training_candidate[candidate_id]'
+    select candidates.first.full_name, from:'training_candidate[candidate_id]'
     find_button('Assign').click
 
     expect(program.candidates.where(email:candidates.first.email)).to exist
@@ -22,11 +22,11 @@ feature "Assign a Training Program" do
 
   scenario "should not display a candidate with the same program assigned" do
     candidate.training_programs << program
-    expect(page).not_to have_content candidate.first_name
+    expect(page).not_to have_content candidate.full_name
   end
 
   scenario "with invalida data" do
-    select candidates.first.first_name, from:'training_candidate[candidate_id]'
+    select candidates.first.full_name, from:'training_candidate[candidate_id]'
     candidates.first.training_programs << program
     find_button('Assign').click
 

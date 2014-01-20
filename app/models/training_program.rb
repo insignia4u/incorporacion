@@ -16,10 +16,18 @@ class TrainingProgram < ActiveRecord::Base
   end
 
   def completed_by?(candidate)
-    candidate.task_candidate.where(task_id: tasks).count === tasks.count
+    count_task_completed_by(candidate) === tasks.count
   end
 
-  def task_completed(candidate)
-    candidate.task_candidate.completed.count
+  def count_task_completed_by(candidate)
+    candidate.completed_tasks(id).count
+  end
+
+  def has_tasks?
+    tasks.any?
+  end
+
+  def percent_of_completitud(candidate)
+    count_task_completed_by(candidate)*100 / tasks.count
   end
 end

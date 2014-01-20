@@ -10,7 +10,7 @@ feature "Display my training programs" do
 
   scenario "when it is visited" do
     login_with(candidate)
-    visit training_programs_path
+    visit my_training_programs_path
 
     expect(page).to have_content program.name
   end

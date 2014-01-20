@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <h4 class="header"><%= training_program.name %> Training Program</h4>
+
+      <% if training_program.has_tasks? %>
+        <table class="table table-striped sortable">
+          <tr>
+            <th class="header">Task</th>
+            <th class="header">Description</th>
+            <th class="header"></th>
+          </tr>
+          <% training_program.tasks.each do |task| %>
+          <tr>
+            <td><%= task.title %></td>
+            <td><%= task.description %></td>
+            <td>
+              <%= link_to 'complete', task_complete_path(task), remote:true,
+                          method: :post unless task.completed_by?(current_candidate) %>
+              <%= 'completed' if task.completed_by?(current_candidate) %>
+            </td>
+          </tr>
+          <% end -%>
+        </table>
+      <% else %>
+        <div class="alert alert-info">Not tasks yet.</div>
+      <% end -%>
+    </div>
+  </div>
+</div>

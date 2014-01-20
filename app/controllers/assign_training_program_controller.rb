@@ -4,6 +4,7 @@ class AssignTrainingProgramController < ApplicationController
   expose(:training_program)
   expose(:training_candidate, attributes: :training_candidate_params)
   expose(:candidates, strategy:UnassignedTrainingCandidateStrategy)
+  expose(:candidates_options) { SelectDecorator.collection(candidates, :full_name) }
 
   def new; end
 

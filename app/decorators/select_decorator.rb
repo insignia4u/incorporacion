@@ -1,5 +1,5 @@
 class SelectDecorator
   def self.collection(resources, attribute)
-    resources.collect{|m| [m[attribute], m.id] }
+    resources.collect{|m| [m.send(attribute), m.id] }
   end
 end

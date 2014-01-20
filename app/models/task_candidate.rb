@@ -2,7 +2,11 @@ class TaskCandidate < ActiveRecord::Base
   belongs_to :task
   belongs_to :candidate
 
-  scope :completed ,-> { where.not(completed_on: nil) }
+  def self.completed( id = nil )
+    return where.not(completed_on: nil) unless id
+    joins(:task).where('tasks.training_program_id = ?',id)
+                .where.not(completed_on: nil)
+  end
 
   validates :completed_on, :task, :candidate, presence:true
 

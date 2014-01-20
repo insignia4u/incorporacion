@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <h4 class="header">My Training Programs</h4>
+      <% if training_programs %>
+        <table class="table table-striped sortable">
+        <tr>
+          <th class="header">Name</th>
+          <th></th>
+          <th class="header">Task completed / Task no.</th>
+          <th class="header">Task no.</th>
+          <th class="header"></th>
+        </tr>
+        <% training_programs.each do |program| %>
+        <tr>
+          <td><%= program.name %></td>
+          <td class="bar-percent">
+            <%= program.percent_of_completitud(current_candidate) %>
+            <span>%</span>
+          </td>
+          <td>
+            <div class="progress">
+              <div style="width:<%= program.percent_of_completitud(current_candidate) %>%" class="bar <%= 'bar-success' if program.percent_of_completitud(current_candidate) == 100 %>"></div>
+            </div>
+          </td>
+          <td class="bar-number"><%= program.tasks.count %></td>
+          <td>
+            <%= link_to 'Tasks', my_training_program_path(program), class:"btn" %>
+          </td>
+        </tr>
+        <% end -%>
+        </table>
+      <% end -%>
+    </div>
+  </div>
+</div>

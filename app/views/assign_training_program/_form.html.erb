@@ -5,8 +5,7 @@
   <div class="control-group">
     <%= f.label :candidate, class: 'control-label' %>
     <div class="controls">
-      <%= f.select :candidate_id,
-                 SelectDecorator.collection(candidates, :first_name) %>
+      <%= f.select :candidate_id, candidates_options %>
     </div>
   </div>
   <div class="control-group">

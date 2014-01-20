@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="span12">
-      <% if current_user && current_user.admin? %>
+      <% if current_user.admin? %>
         <%= link_to 'Create', new_training_program_path, class:'btn pull-right' %>
       <% end -%>
       <h4 class="header">Training Programs</h4>
@@ -26,7 +26,7 @@
             <td><%= program.candidates.count %></td>
             <% end -%>
             <% if current_candidate %>
-            <td><%= program.task_completed(current_candidate) %></td>
+            <td><%= program.count_task_completed_by(current_candidate) %></td>
             <% end -%>
             <td>
               <% if current_user %>

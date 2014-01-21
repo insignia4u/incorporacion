@@ -12,8 +12,8 @@ describe Task do
 
   describe "Completed" do
     before do
-      @task = create(:task)
-      @candidate = create(:candidate)
+      @task = create(:task_with_training_program_saved)
+      @candidate = create(:candidate_with_company)
       @task.candidates << @candidate
     end
 

@@ -1,4 +1,5 @@
 require "spec_helper"
+Sidekiq::Testing.inline!
 
 feature "A Candidate complete a training program" do
   given(:user) { create(:user) }
@@ -16,7 +17,7 @@ feature "A Candidate complete a training program" do
 
   scenario "sending completation email" do
     page.driver.post task_complete_path(program.tasks.last)
-    open_email(candidate.email)
+    open_email(user.email)
     expect( current_email ).to have_content candidate.full_name
     expect( current_email ).to have_content program.name
   end
@@ -24,7 +25,7 @@ feature "A Candidate complete a training program" do
   scenario "sending completation email with another program completed" do
     candidate.tasks << another_program.tasks.take(another_program.tasks.count - 1)
     page.driver.post task_complete_path(another_program.tasks.last)
-    open_email(candidate.email)
+    open_email(user.email)
     expect( current_email ).to have_content candidate.full_name
     expect( current_email ).to have_content another_program.name
   end

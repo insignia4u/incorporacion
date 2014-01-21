@@ -26,4 +26,8 @@ class Candidate < ActiveRecord::Base
   def completed_tasks(program_id)
     task_candidate.completed(program_id)
   end
+
+  def company_users
+    company.users
+  end
 end

@@ -9,6 +9,7 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/email/rspec'
 require "paperclip/matchers"
+require 'sidekiq/testing'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -40,5 +41,9 @@ RSpec.configure do |config|
   config.include Paperclip::Shoulda::Matchers
 
   config.include AuthenticationHelpers
+
+  config.before(:each) do |m|
+    Sidekiq::Worker.clear_all
+  end
 
 end

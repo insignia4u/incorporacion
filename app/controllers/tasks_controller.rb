@@ -11,7 +11,6 @@ class TasksController < ApplicationController
     if task_candidate.save
       flash[:success] = 'Task completed successfully.'
       if current_candidate.complete_training_program?(training_program)
-        ProgramTrainingMailer.completed_program(current_candidate,task.training_program).deliver
         flash[:success] = 'Training program completed successfully.'
       end
     end

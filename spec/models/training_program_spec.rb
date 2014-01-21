@@ -12,9 +12,10 @@ describe TrainingProgram do
 
   describe 'Completed' do
     before do
+      mock_model(User)
       @program = create(:training_program_with_tasks)
       @program2 = create(:training_program_with_tasks)
-      @candidate = create(:candidate)
+      @candidate = create(:candidate_with_company)
       @candidate.training_programs << @program
       @candidate.tasks << @program.tasks
     end

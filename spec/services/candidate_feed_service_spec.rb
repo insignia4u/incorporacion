@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe CandidateFeedService do
   before(:each) do
-    @candidate = create(:candidate)
+    @candidate = create(:candidate_with_company)
     @program = create(:training_program_with_tasks)
     @program2 = create(:training_program_with_tasks)
     @candidate.training_programs << @program

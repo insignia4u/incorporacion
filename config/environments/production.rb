@@ -58,4 +58,14 @@ Incorporacion::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.default_url_options = { :host => 'incorporacion.herokuapp.com' }
+
+  config.action_mailer.base.smtp_settings = {
+    :port           => ENV['MAILGUN_SMTP_PORT'],
+    :address        => ENV['MAILGUN_SMTP_SERVER'],
+    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+    :domain         => 'incorporacion.herokuapp.com',
+    :authentication => :plain,
+  }
+  config.action_mailer.base.delivery_method = :smtp
 end

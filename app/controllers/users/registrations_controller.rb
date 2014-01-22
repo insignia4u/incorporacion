@@ -8,9 +8,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     resource.admin = true #Sets admin
-
+    resource.skip_confirmation!
     if resource.save
-      resource.confirm! #confirm registration
       yield resource if block_given?
       set_flash_message :notice, :signed_up if is_flashing_format?
       sign_up(resource_name, resource)
